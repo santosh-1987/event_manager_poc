@@ -28,6 +28,30 @@ module Api
           conn.use Faraday::Response::RaiseError
         end
       end
+
+      def connect_with_stub(url)
+        stubs = Faraday::Adapter::Test::Stubs.new
+        conn = Faraday.new { |b| b.adapter(:test, stubs) }
+        stubs.get('http:/api/export/data.csv') do
+          [
+            200,
+            { 'Content-Type': 'application/json' },
+            '{"data": "Stubbed response for testing"}'
+          ]
+        end
+        stubs.post('http:/api/email/target') do
+          [
+            200,
+            { 'Content-Type': 'application/json' },
+            '{"data": "Stubbed response for testing"}'
+          ]
+        end
+        conn
+      end
+
+      private
+
+      def stubbed_connection(url) end
     end
   end
 end
