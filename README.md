@@ -31,16 +31,5 @@ be sent via Iterable.io API.
 - Your code should be modular, readable, and maintainable in Ruby on Rails.
 - Include appropriate comments and documentation.
 
-## Bonus:
-
-- Implement user management within the application, allowing for multiple
-  users to be associated with events.
-- Implement authentication for users using Devise or any other suitable gem.
-
-## Constraints:
-
-- The application must be developed using Ruby on Rails.
-- Follow best practices for integrating third-party APIs in a RoR application and
-  for mocking out API interactions.
-- The application does not need to persist data across restarts, apart from what
-  is stored in Iterable.io.
+## Start the APP
+`STUB=true bin/dev`
