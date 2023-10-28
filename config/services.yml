@@ -1,0 +1,22 @@
+aliases: &client_config
+  encryption_key: <%= ENV['ENCRYPTION_KEY'] || 'bg0y0oR3eTJQQOWE' %>
+  export_limit: 1_000_000
+  export_timeout: 3_600
+  open_timeout_default: <%= ENV['OPEN_TIMEOUT_DEFAULT'] || '6000' %>
+  read_timeout_default: <%= ENV['READ_TIMEOUT_DEFAULT'] || '6000' %>
+  retries_default: '2'
+  retry_on_default: [ '408', '502', '503', '504' ]
+  iterable_io_service_uri: <%= ENV['ITERABLE_SERVICE_URI'] || 'https://api.iterable.com/' %>
+  iterable_api_token: <%= ENV['ITERABLE_TOKEN'] || '6bjhe65ytughjjhbv6r6y32rvuygeyru' %>
+
+development:
+  <<: *client_config
+
+staging:
+  <<: *client_config
+
+test:
+  <<: *client_config
+
+production:
+  <<: *client_config
